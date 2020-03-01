@@ -12,15 +12,23 @@ import java.util.List;
 public class TaxiServiceImpl implements TaxiService {
     @Override
     public String taxiChargeRule(List<String> taxiInput) {
-        String taxiContent="";
+        String taxiContent = "";
         for (String input : taxiInput) {
             FileUtil fileUtil = new FileUtil();
             List<String> realTaxiInput = fileUtil.judgeTaxiInput(input);
             double cost = getTaxiCost(realTaxiInput.get(0), realTaxiInput.get(1));
-            String costDesc ="收费" + Math.round(cost) + "元\n";
-            taxiContent = taxiContent+costDesc;
-        }return taxiContent; }
+            String costDesc = "收费" + Math.round(cost) + "元\n";
+            taxiContent = taxiContent + costDesc;
+        }
+        return taxiContent;
+    }
 
+    /**
+     * 计费
+     * @param mile
+     * @param waitTime
+     * @return
+     */
     public double getTaxiCost(String mile, String waitTime) {
         double cost = 0;
         if (Integer.parseInt(mile) <= 2) {
@@ -29,6 +37,8 @@ public class TaxiServiceImpl implements TaxiService {
             cost = 6 + (Integer.parseInt(mile) - 2) * 0.8 + 0.25 * Integer.parseInt(waitTime);
         } else if ((Integer.parseInt(mile) > 8)) {
             cost = 6 + 6 * 0.8 + (Integer.parseInt(mile) - 8) * 1.2 + 0.25 * Integer.parseInt(waitTime);
-        }return cost; }
+        }
+        return cost;
+    }
 
 }
