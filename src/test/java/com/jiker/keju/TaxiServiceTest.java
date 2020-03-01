@@ -19,7 +19,7 @@ public class TaxiServiceTest {
             TaxiServiceImpl taxiService = new TaxiServiceImpl();
             List<String> taxiContent = new ArrayList<>();
             taxiContent.add("2lon,nm345");
-            List<String> taxiChargeRule = taxiService.taxiChargeRule(taxiContent);
+            String taxiChargeRule = taxiService.taxiChargeRule(taxiContent);
             assertNotNull(taxiChargeRule);
         }
         @Test

@@ -10,5 +10,5 @@ public interface TaxiService {
     /**
      * taxi收费规则
      */
-    public List<String> taxiChargeRule(List<String> taxiInput);
+    public String taxiChargeRule(List<String> taxiInput);
 }

@@ -11,15 +11,15 @@ import java.util.List;
  */
 public class TaxiServiceImpl implements TaxiService {
     @Override
-    public List<String> taxiChargeRule(List<String> taxiInput) {
-        List<String> taxiContentList = new ArrayList<>();
+    public String taxiChargeRule(List<String> taxiInput) {
+        String taxiContent="";
         for (String input : taxiInput) {
             FileUtil fileUtil = new FileUtil();
             List<String> realTaxiInput = fileUtil.judgeTaxiInput(input);
             double cost = getTaxiCost(realTaxiInput.get(0), realTaxiInput.get(1));
             String costDesc ="收费" + Math.round(cost) + "元\n";
-            taxiContentList.add(costDesc);
-        }return taxiContentList; }
+            taxiContent = taxiContent+costDesc;
+        }return taxiContent; }
 
     public double getTaxiCost(String mile, String waitTime) {
         double cost = 0;

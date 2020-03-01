@@ -20,7 +20,7 @@ public class AppRunner {
         TaxiServiceImpl taxiService = new TaxiServiceImpl();
         FileUtil fileUtil = new FileUtil();
         List<String> taxiInput = fileUtil.readTaxiInput(file.toString());
-        receipt = taxiService.taxiChargeRule(taxiInput).toString();
+        receipt = taxiService.taxiChargeRule(taxiInput);
         System.out.println(receipt);
     }
 }
